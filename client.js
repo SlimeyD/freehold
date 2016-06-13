@@ -1,47 +1,34 @@
-
+window.thedebug = require('debug')
 const ws = require('pull-ws-server')
 const { start, html, pull } = require('inu')
-const toPull = require('stream-to-pull-stream')
-const toStream = require('pull-stream-to-stream')
 const many = require('pull-many')
 const JSONDL = require('pull-json-doubleline')
 const delay = require('pull-delay')
+const ready = require('domready')
+const map = require('lodash/fp/map')
 
-const domready = require('domready')
 const initialState = require('./state').initialState
+const State = require('./state').state
+const Action = require('./actions/actions')
+const Effect = require('./effects/effects')
 const Model = require('./models/model')
 const Message = require('./models/message')
 const Messages = require('./models/messages')
+
 const debug = require('debug')('client')
 
-const map = require('lodash/fp/map')
-window.thedebug = require('debug')
 
 const App = stream => {
   return {
 
     init: initialState,
 
-    update: (model, action) => {
-      switch (action.type) {
-        case 'UPDATE_MESSAGES':
-          debug('action.payload', action.payload, model)
-          return { 
-            model: Model.update(
-              model,
-              { messages: { $set: map(Message)([action.payload]) } }
-            )
-          }
-
-        default:
-          return { model }
-      }
-    },
+    update: (model, action) => State(Action(action).update(model, action)),
 
     view: (model, dispatch) => {
       debug('view() model', model)
       model.messages.forEach(function (m) {
-        debug('m', m)  
+        debug('m', m.text)  
       })
       return html`
         <ul>
@@ -52,24 +39,11 @@ const App = stream => {
       `
     },
 
-    run: effect => {
-      debug('effect: ', effect)
-      switch (effect.type) {
-         case 'STREAMS':
-           return pull(
-             stream,
-             JSONDL.parse(),
-             pull.map(messages => {
-               debug('messages in effect', messages)
-               return { type: 'UPDATE_MESSAGES', payload: messages }
-             })
-           )
-      }
-    }
+    run: effect => Effect(effect).run(stream)
   }
 }
 
-domready(() => {
+ready(() => {
   const main = document.querySelector('#app')
   const msg = { text: 'hello', author: 'batman', dateTime: Date.now() }
 

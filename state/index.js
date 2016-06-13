@@ -1,5 +1,7 @@
 const t = require('tcomb')
 const Model = require('../models/model')
+const scheduleInit = require('../effects/scheduleInit')
+
 const debug = require('debug')('state')
 
 const State = t.struct({
@@ -12,7 +14,7 @@ const initialState = () => {
   
   return State({
     model: Model({ messages: [] }),
-    effect: { type: 'STREAMS' }
+    effect: scheduleInit({})
   })
 }
 
