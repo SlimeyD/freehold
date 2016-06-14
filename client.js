@@ -6,6 +6,7 @@ const JSONDL = require('pull-json-doubleline')
 const delay = require('pull-delay')
 const ready = require('domready')
 const map = require('lodash/fp/map')
+// const map = require('lodash.map')
 
 const initialState = require('./state').initialState
 const State = require('./state').state
@@ -27,16 +28,11 @@ const App = stream => {
 
     view: (model, dispatch) => {
       debug('view() model', model)
-      model.messages.forEach(function (m) {
-        debug('m', m.text)  
-      })
-      return html`
-        <ul>
-          ${model.messages.map(function (msg) {
-            return html`<li>${msg.text}</li>`
-          })}
-        </ul>
-      `
+      const div = message => html`<div>${message.text}</div>`
+//      debug(map(li)(model.messages))
+      const divs = map(div)(model.messages)
+
+      return html`<div>${divs}</div>`
     },
 
     run: effect => Effect(effect).run(stream)
@@ -54,6 +50,10 @@ ready(() => {
 
     pull(
       views(),
+      pull.map(view => {
+        debug('view - map', view)
+        return view
+      }),
       pull.drain(view => {
         debug('view', view)
         html.update(main, view)
@@ -63,29 +63,11 @@ ready(() => {
     pull(
       pull.values([msg]),
       delay(20),
-      JSONDL.stringify(),
       pull.map(msg => {
         debug('writing', msg)
-        return msg
+        return JSON.stringify(msg)
       }),
-      stream,
-      JSONDL.parse(),
-      pull.collect((err, message) => {
-        debug('message back', message)
-      })
+      stream
     )
-
-     pull(
-       stream,
-       JSONDL.parse(),
-       pull.map(messages => {
-         debug('messages back 2', messages)
-       }),
-       pull.drain(() => {
-         debug('draining')
-       })
-     )
-
-
   })
 })

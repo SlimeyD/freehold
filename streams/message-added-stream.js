@@ -9,7 +9,7 @@ const messageAddedStream = stream => {
     stream,
     pull.map(JSON.parse),
     pull.map(message => {
-      debug('message: ', typeof message) 
+      debug('message: ', message, typeof message) 
       return message
     }),
     pull.map(message => messageAdded(message))
