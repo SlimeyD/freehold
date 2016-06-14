@@ -59,7 +59,7 @@ ready(() => {
     
     pull(
       pull.values([msg]),
-      delay(20),
+      delay(200),
       pull.map(JSON.stringify),
       stream
     )
