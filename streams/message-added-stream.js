@@ -7,6 +7,10 @@ const messageAddedStream = stream => {
   debug('stream', messageAdded)
   return pull(
     stream,
+    pull.map(message => {
+      debug('message', typeof message, message)
+      return message
+    }),
     pull.map(JSON.parse),
     pull.map(message => {
       debug('message: ', message, typeof message) 

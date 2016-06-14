@@ -13,7 +13,10 @@ const initialState = () => {
   debug('initialState()')
   
   return State({
-    model: Model({ messages: [] }),
+    model: Model({ 
+      messages: [], 
+      url: '/'
+    }),
     effect: scheduleInit({})
   })
 }

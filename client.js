@@ -6,8 +6,8 @@ const JSONDL = require('pull-json-doubleline')
 const delay = require('pull-delay')
 const ready = require('domready')
 const map = require('lodash/fp/map')
-// const map = require('lodash.map')
 
+const Router = require('./components/router')
 const initialState = require('./state').initialState
 const State = require('./state').state
 const Action = require('./actions/actions')
@@ -27,12 +27,9 @@ const App = stream => {
     update: (model, action) => State(Action(action).update(model, action)),
 
     view: (model, dispatch) => {
-      debug('view() model', model)
-      const div = message => html`<div>${message.text}</div>`
-//      debug(map(li)(model.messages))
-      const divs = map(div)(model.messages)
+      const content = Router(model, dispatch)
 
-      return html`<div>${divs}</div>`
+      return html`<div>${content}</div>`
     },
 
     run: effect => Effect(effect).run(stream)
@@ -63,10 +60,7 @@ ready(() => {
     pull(
       pull.values([msg]),
       delay(20),
-      pull.map(msg => {
-        debug('writing', msg)
-        return JSON.stringify(msg)
-      }),
+      pull.map(JSON.stringify),
       stream
     )
   })
