@@ -1,8 +1,6 @@
 window.thedebug = require('debug')
-const ws = require('pull-ws-server')
 const { start, html, pull } = require('inu')
-const many = require('pull-many')
-const JSONDL = require('pull-json-doubleline')
+const ws = require('pull-ws-server')
 const delay = require('pull-delay')
 const ready = require('domready')
 const map = require('lodash/fp/map')
@@ -17,7 +15,6 @@ const Message = require('./models/message')
 const Messages = require('./models/messages')
 
 const debug = require('debug')('client')
-
 
 const App = stream => {
   return {
