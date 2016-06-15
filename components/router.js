@@ -8,7 +8,8 @@ const Main = require('./main')
 const router = sheetRouter(route => {
   debug('route: ', route)
   return [
-    route('/', () => Main)
+    route('/', () => Main),
+    route('/test', () => Main)
   ]
 })
 

@@ -1,6 +1,5 @@
 window.thedebug = require('debug')
 const { start, html, pull } = require('inu')
-const ws = require('pull-ws-server')
 const delay = require('pull-delay')
 const ready = require('domready')
 const map = require('lodash/fp/map')
@@ -16,49 +15,34 @@ const Messages = require('./models/messages')
 
 const debug = require('debug')('client')
 
-const App = stream => {
-  return {
+const app = {
 
-    init: initialState,
+  init: initialState,
 
-    update: (model, action) => State(Action(action).update(model, action)),
+  update: (model, action) => State(Action(action).update(model, action)),
 
-    view: (model, dispatch) => {
-      const content = Router(model, dispatch)
+  view: (model, dispatch) => {
+    const content = Router(model, dispatch)
 
-      return html`<div>${content}</div>`
-    },
+    return html`<div>${content}</div>`
+  },
 
-    run: effect => Effect(effect).run(stream)
-  }
+  run: effect => Effect(effect).run(stream)
 }
 
 ready(() => {
   const main = document.querySelector('#app')
-  const msg = { text: 'hello', author: 'batman', dateTime: Date.now() }
+  const { views } = start(app)
 
-  ws.connect('ws://localhost:3000', (err, stream) => {
-    debug('stream', err, stream)
-    const app = App(stream)
-    const { views } = start(app)
-
-    pull(
-      views(),
-      pull.map(view => {
-        debug('view - map', view)
-        return view
-      }),
-      pull.drain(view => {
-        debug('view', view)
-        html.update(main, view)
-      })
-    )
-    
-    pull(
-      pull.values([msg]),
-      delay(200),
-      pull.map(JSON.stringify),
-      stream
-    )
-  })
+  pull(
+    views(),
+    pull.map(view => {
+      debug('view - map', view)
+      return view
+    }),
+    pull.drain(view => {
+      debug('view', view)
+      html.update(main, view)
+    })
+  )
 })

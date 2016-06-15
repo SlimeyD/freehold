@@ -9,7 +9,12 @@ const Main = (model, dispatch) => {
   const divs = map(div)(model.messages)
 
   debug('divs', divs)
-  return html`<div>${divs}</div>`
+  return html`
+    <div>
+      <div>${divs}</div>
+      <a href="./test">test</a>
+    </div>
+      `
 }
 
 module.exports = Main
