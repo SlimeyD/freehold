@@ -19,6 +19,8 @@ const setLocationStream = () => {
   href(push)
   history(push)
 
+  debug('routeActions: ', routeActions)
   return routeActions
 }
 
+module.exports = setLocationStream

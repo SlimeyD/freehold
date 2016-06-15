@@ -4,7 +4,7 @@ const messageAdded = require('../actions/message-added')
 const debug = require('debug')('streams:message-added-stream')
 
 const messageAddedStream = stream => {
-  debug('stream', messageAdded)
+  debug('stream', stream)
   return pull(
     stream,
     pull.map(message => {
