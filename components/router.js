@@ -1,6 +1,7 @@
 const { html } = require('inu')
 const sheetRouter = require('sheet-router')
 const debug = require('debug')('components:router')
+const Url = require('url')
 
 // components
 const Main = require('./main')
@@ -14,9 +15,8 @@ const router = sheetRouter(route => {
 })
 
 const Router = (model, dispatch) => {
-  debug('model: ', model)
-  const Component = router(model.url)
-  return Component(model, dispatch)
+  debug('model: ', model.location)
+  return router(model.location.href)(model, dispatch)
 }
 
 module.exports = Router

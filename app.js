@@ -8,7 +8,7 @@ const Effect = require('./effects/effects')
 module.exports = {
 
   init: initialState,
-
+    
   update: (model, action) => State(Action(action).update(model, action)),
 
   view: (model, dispatch) => {

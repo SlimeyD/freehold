@@ -13,7 +13,8 @@ const setLocationStream = () => {
   })
 
   function push (href) {
-    routeActions.push(setLocation(href))
+    debug('push - href: ', href, setLocation)
+    routeActions.push(setLocation({ href: href }))
   }
 
   href(push)

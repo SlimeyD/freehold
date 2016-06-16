@@ -1,9 +1,8 @@
 const t = require('tcomb')
-const Messages = require('./messages')
 
 const Model = t.struct({ 
-  messages: Messages, 
-  url: t.String
+  messages: require('./messages'), 
+  location: require('./location')
 }, 'Model')
 
 module.exports = Model

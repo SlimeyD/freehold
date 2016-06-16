@@ -1,11 +1,11 @@
 const t = require('tcomb')
 
 const messageAdded = require('./message-added')
+const setLocation = require('./set-location')
 
-// const Action = t.union([
-//   messageAdded
-// ], 'Action')
-
-const Action = messageAdded
+const Action = t.union([
+  messageAdded,
+  setLocation
+])
 
 module.exports = Action

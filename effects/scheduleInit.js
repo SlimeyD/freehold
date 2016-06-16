@@ -18,7 +18,7 @@ ScheduleInit.prototype.run = function () {
    
       pull(
         pull.values([msg]),
-        delay(200),
+        delay(500),
         pull.map(JSON.stringify),
         stream
       )
