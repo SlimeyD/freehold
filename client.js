@@ -10,7 +10,14 @@ const debug = require('debug')('client')
 
 ready(() => {
   const main = document.querySelector('#app')
-  const { views } = start(app)
+  const { views, states } = start(app)
+
+  pull(
+    states(),
+    pull.drain(state => {
+      debug('state: ', state)
+    })
+  )
 
   pull(
     views(),
@@ -19,7 +26,6 @@ ready(() => {
       return view
     }),
     pull.drain(view => {
-      debug('view', view)
       html.update(main, view)
     })
   )

@@ -1,5 +1,6 @@
 const { html } = require('inu')
 const Router = require('./components/router')
+
 const initialState = require('./state').initialState
 const State = require('./state').state
 const Action = require('./actions/actions')

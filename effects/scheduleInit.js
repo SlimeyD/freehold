@@ -11,14 +11,13 @@ const ScheduleInit = t.struct({}, 'scheduleInit')
 const msg = { text: 'hello', author: 'batman', dateTime: Date.now() }
 
 ScheduleInit.prototype.run = function () {
-  debug('run', deferred)
    ws.connect('ws://localhost:3000', (err, stream) => {
-     debug('stream: ', stream, deferred)
+     debug('stream: ', stream)
       deferred.resolve(stream.source)      
    
       pull(
         pull.values([msg]),
-        delay(500),
+        delay(1000),
         pull.map(JSON.stringify),
         stream
       )

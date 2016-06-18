@@ -6,13 +6,11 @@ const debug = require('debug')('components:main')
 const Main = (model, dispatch) => {
   debug('model', model)
   const div = message => html`<div>${message.text}</div>`
-  const divs = map(div)(model.messages)
 
-  debug('divs', divs)
   return html`
     <div>
-      <div>${divs}</div>
-      <a href="./test">test</a>
+      <div>${map(div)(model.messages)}</div>
+      <a href="./register">register</a>
     </div>
       `
 }

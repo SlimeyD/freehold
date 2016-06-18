@@ -15,7 +15,8 @@ const initialState = () => {
   return State({
     model: Model({ 
       messages: [], 
-      location: { href: '/' }
+      location: { href: '/' },
+      user: { username: '' }
     }),
     effect: scheduleInit({})
   })
