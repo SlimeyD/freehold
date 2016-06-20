@@ -1,6 +1,7 @@
 const t = require('tcomb')
 const Model = require('../models/model')
 const scheduleInit = require('../effects/scheduleInit')
+const config = require('../config')
 
 const debug = require('debug')('state')
 
@@ -16,7 +17,14 @@ const initialState = () => {
     model: Model({ 
       messages: [], 
       location: { href: '/' },
-      user: { username: '' }
+      user: { username: '' },
+      registerComponent: { 
+        id: config.registerComponent.id,
+        input: {
+          id: config.registerComponent.input.id,
+          focused: true
+        }
+      }
     }),
     effect: scheduleInit({})
   })

@@ -1,10 +1,8 @@
 module.exports = {
-  data: {
-    people: {
-      1: {
-        id: 1,
-        name: "Simon"
-      }
+  registerComponent: {
+    id: 'register',
+    input: { 
+      id: 'register-input' 
     }
   },
   port: 5000,
