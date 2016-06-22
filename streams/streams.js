@@ -4,10 +4,9 @@ const messageAddedStream = require('./message-added-stream')
 const setLocationStream = require('./set-location-stream')
 const registerLoaded = require('./register-loaded')
 
-const Streams = stream => {
-
+const Streams = client => {
   return many([
-    messageAddedStream(stream),
+    messageAddedStream(client),
     setLocationStream(),
     registerLoaded()
   ])

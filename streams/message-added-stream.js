@@ -3,17 +3,11 @@ const messageAdded = require('../actions/message-added')
 
 const debug = require('debug')('streams:message-added-stream')
 
-const messageAddedStream = stream => {
-  debug('stream', stream)
+const messageAddedStream = client => {
   return pull(
-    stream,
+    client.messages(),
     pull.map(message => {
       debug('message', typeof message, message)
-      return message
-    }),
-    pull.map(JSON.parse),
-    pull.map(message => {
-      debug('message: ', message, typeof message) 
       return message
     }),
     pull.map(message => messageAdded(message))

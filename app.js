@@ -1,10 +1,13 @@
-const { html } = require('inu')
-const Router = require('./components/router')
-
+const { html }     = require('inu')
+const Router       = require('./components/router')
 const initialState = require('./state').initialState
-const State = require('./state').state
-const Action = require('./actions/actions')
-const Effect = require('./effects/effects')
+const State        = require('./state').state
+const Action       = require('./actions/actions')
+const Effect       = require('./effects/effects')
+const wsClient     = require('./ws-client')
+const api          = require('./api')
+
+const client = wsClient(api)
 
 module.exports = {
 
@@ -18,5 +21,5 @@ module.exports = {
     return html`<div>${content}</div>`
   },
 
-  run: effect => Effect(effect).run()
+  run: effect => Effect(effect).run(client)
 }

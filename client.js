@@ -3,7 +3,6 @@ const { start, html, pull } = require('inu')
 const delay = require('pull-delay')
 const ready = require('domready')
 const map = require('lodash/fp/map')
-
 const app = require('./app')
 
 const debug = require('debug')('client')

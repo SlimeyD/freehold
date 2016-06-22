@@ -5,10 +5,10 @@ module.exports = {
       id: 'register-input' 
     }
   },
-  port: 5000,
+  port: 3000,
   url: {
     protocol: 'http',
     hostname: 'localhost',
-    port: 5000
+    port: 3000
   }
 }
