@@ -1,4 +1,5 @@
 module.exports = {
   addMessage: 'async',
-  messages: 'source'
+  messages: 'source',
+  db: 'async'
 }
