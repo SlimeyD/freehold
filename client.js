@@ -1,22 +1,17 @@
-window.thedebug = require('debug')
+window.thedebug             = require('debug')
+const debug                 = require('debug')('client')
 const { start, html, pull } = require('inu')
-const delay = require('pull-delay')
-const ready = require('domready')
-const map = require('lodash/fp/map')
-const app = require('./app')
-
-const debug = require('debug')('client')
+const ready                 = require('domready')
+const app                   = require('./app')
+const initialState          = require('./state')
+const api                   = require('./api')
+const wsClient              = require('./ws-client')
+const Effect                = require('./effects/client-effects')
 
 ready(() => {
   const main = document.querySelector('#app')
-  const { views, states } = start(app)
-
-  pull(
-    states(),
-    pull.drain(state => {
-      debug('state: ', state)
-    })
-  )
+  const client = wsClient(api)
+  const { views, states } = start(app(initialState, client, Effect))
 
   pull(
     views(),

@@ -6,7 +6,6 @@ const config = require('../config')
 
 const debug = require('debug')('state')
 
-
 const initialState = () => {
   debug('initialState()')
   
@@ -27,9 +26,5 @@ const initialState = () => {
   })
 }
 
-module.exports = { 
-  state: State, 
-  initialState: initialState 
-
-}
+module.exports = initialState 
 

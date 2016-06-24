@@ -7,13 +7,14 @@ const focusInput = require('../actions/focus-input.js')
 module.exports = (model, dispatch) => {
   debug(model)
   const { id, input } = model.registerComponent
-  const focused = input.focused
   const inputId = input.id
+  const style = {}
+  style["background-color"] = input.focused ? "grey" : "white"
 
   return html`
     <div id="${id}">
       <input
-        style=${focused ? "background-color: grey;" : "background-color: white;"}
+        style=${style}
         id="${inputId}"
         onblur=${() => dispatch(focusInput({ focused: false, id: inputId }))}
         onfocus=${() => dispatch(focusInput({ focused: true, id: inputId }))}

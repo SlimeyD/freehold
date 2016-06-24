@@ -3,7 +3,8 @@ const sheetRouter = require('sheet-router')
 const debug = require('debug')('components:router')
 const Url = require('url')
 
-// components
+
+  // components
 const Main = require('./main')
 const Register = require('./register')
 

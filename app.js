@@ -1,25 +1,22 @@
 const { html }     = require('inu')
 const Router       = require('./components/router')
-const initialState = require('./state').initialState
-const State        = require('./state').state
+const State        = require('./state/state')
 const Action       = require('./actions/actions')
-const Effect       = require('./effects/effects')
-const wsClient     = require('./ws-client')
-const api          = require('./api')
 
-const client = wsClient(api)
+const noop = () => {}       
 
-module.exports = {
+module.exports = (initialState, client, Effect) => {
+  return {
+    init: initialState,
+      
+    update: (model, action) => State(Action(action).update(model, action)),
 
-  init: initialState,
-    
-  update: (model, action) => State(Action(action).update(model, action)),
+    view: (model, dispatch) => {
+      const content = Router(model, dispatch)
 
-  view: (model, dispatch) => {
-    const content = Router(model, dispatch)
+      return html`<div>${content}</div>`
+    },
 
-    return html`<div>${content}</div>`
-  },
-
-  run: effect => Effect(effect).run(client)
+    run: effect => (Effect && client) ? Effect(effect).run(client) : noop
+  }
 }
