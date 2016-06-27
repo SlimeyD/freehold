@@ -3,15 +3,16 @@
 const debug            = require('debug')('server')
 const http             = require('http')
 const ws               = require('pull-ws-server')
-const serveStatic      = require('serve-static')
 const finalHandler     = require('finalhandler')
 const { start, pull }  = require('inu')
-const toPull           = require('pull-stream-to-stream')
+const toPull           = require('stream-to-pull-stream')
 const createServer     = require('pull-http-server')
+const ecstatic         = require('ecstatic')
+const serveStatic      = require('serve-static')
 
 //lib
-const wsServe       = require('./ws-serve')
-const view          = require('./view')
+const wsServe          = require('./ws-serve')
+const render           = require('./view')
 
 // variables
 const port = process.env.PORT || require('./config').port
@@ -22,17 +23,20 @@ let connectionIdCounter = 0
 const serve = serveStatic('public')
 
 // server
-const server = createServer(stream => {
-  debug('stream :', stream.source.url)
+const server = http.createServer((req, res) => {
+  debug('url :', req.url)
 
-  pull(
-    view(stream.source.url),
-    pull.map(page => {
-      debug('page; ', page)
-      return page
-    }),
-    stream
-  )
+  serve(req, res, () => {
+    debug('next ------')
+    pull(
+      render(req.url),
+      pull.drain(page => {
+        debug('page: ', page)
+        res.writeHead(200, { "Content-Type": 'text-plain' })
+        res.end(page)
+      })
+    )
+  })
 })
 
 const wss = ws.createServer({ server: server }, wsServe)

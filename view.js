@@ -5,12 +5,14 @@ const serverState     = require('./state/server')
 const Page            = require('./components/page') 
 
 module.exports = route => {
-  const { views } = start(app(serverState(route)))
+  const initialState = serverState(route)
+  debug('initialState; ', initialState)
+  const { views } = start(app(initialState))
   return pull(
     views(),
     pull.map(view => {
-      debug('view: ', view)
-      return Page(view)
+//       debug('view: ', view)
+      return Page(view, initialState())
     })
   )
 }
