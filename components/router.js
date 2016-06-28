@@ -1,25 +1,23 @@
-const { html } = require('inu')
-const sheetRouter = require('sheet-router')
-const debug = require('debug')('components:router')
-const Url = require('url')
-
+const debug         = require('debug')('components:router')
+const { html }      = require('inu')
+const sheetRouter   = require('sheet-router')
 
   // components
-const Main        = require('./main')
-const FourOhFour  = require('./404.js')
-const Register    = require('./register')
+const Splash        = require('./splash')
+const Mortgage      = require('./mortgage')
+const FourOhFour    = require('./404.js')
 
 const router = sheetRouter('/404', route => {
-  debug('route')
   return [
-    route('/', () => Main),
-    route('/404', () => FourOhFour),
-    route('/register', () => Register)
+    route('/', () => Splash),
+    route('/mortgage', () => Mortgage),
+    route('/404', () => FourOhFour)
   ]
 })
 
 const Router = (model, dispatch) => {
-  debug('model: ', model)
+  debug('model: ', model.location.href)
+
   return router(model.location.href)(model, dispatch)
 }
 
