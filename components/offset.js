@@ -2,13 +2,15 @@ const debug       = require('debug')('components:offset')
 const { html }    = require('inu')
 const Chart       = require('./chart')
 
-const IncomeAndExpenses = (model, dispatch) => {
+const Offset = (model, dispatch) => {
   debug('model', model)
   const totalYears = "27 years"
   const principal = "$400k"
   const interest = "$190k"
   const saving = "$60k"
   const savingYears = "three"
+  const potentialSaving = "$150k"
+  const potentialYears = "7 years"
 
   return html`
     <div id="offset">
@@ -20,24 +22,28 @@ const IncomeAndExpenses = (model, dispatch) => {
         </p>
         <p>That's a total saving of ${saving} and ${savingYears} off your mortgage
         </p>  
+        <p>We've calculated you could save up to <bold>${potentialYears}
+          and cut a total of ${potentialYears} off your mortgage</bold>
+          without increasing your repayments.
+        </p>
+        <p>Enter your name, email and phone number below to receive your
+          personalised projection
+        </p>
       </div>
-      <label for="partners-income">Include partner's income?</label> 
-      <input type="checkbox" id="partners-income">
-      <h3>Partner's Income</h3>
-      ${IncomeInput(model, dispatch)}
-      <div id="expenses"></div>
-        <input id="expenses-period-week" type="radio" name="expenses-period" checked value="per week" />
-        <input id="expenses-period-month" type="radio" name="expenses-period" checked value="per month" />
-        <table>
-          <tr>
-            <td>Electricity</td><td>$</td>
-          </tr>
-        </table>
-        <a href="./offset"><button>Calculate your offset</button></a>
+      <div id="details">
+        <input id="details-name" type="text">
+        <input id="details-email" type="email">
+        <input id="details-phone" type="tel">
+        <button id="details-submit">Find out more</button>
       </div>
+      <footer>
+        <a href="./about">About</a>
+        <a href="./contact">Contact Us</a>
+        <a href="./privacy">Privacy</a>
+      </footer>
     </div>`
 }
 
-module.exports = IncomeAndExpenses
+module.exports = Offset
 
 

@@ -6,6 +6,7 @@ const sheetRouter       = require('sheet-router')
 const Splash            = require('./splash')
 const Mortgage          = require('./mortgage')
 const IncomeAndExpenses = require('./income-&-expenses')
+const Offset            = require('./offset')
 const FourOhFour        = require('./404.js')
 
 const router = sheetRouter('/404', route => {
@@ -13,6 +14,7 @@ const router = sheetRouter('/404', route => {
     route('/', () => Splash),
     route('/mortgage', () => Mortgage),
     route('/income-&-expenses', () => IncomeAndExpenses),
+    route('/offset', () => Offset),
     route('/404', () => FourOhFour)
   ]
 })

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:components": "browserify test/components/**.js | tap-closer | smokestack | tap-spec",
     "build": "browserify client.js -o public/bundle.js -dv",
