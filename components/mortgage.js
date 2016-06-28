@@ -12,12 +12,12 @@ const Mortgage = (model, dispatch) => {
 
   return html`
     <div>
-      <div class="borrow-input">
+      <div id="borrow-input">
         <h2>How much do you want to borrow?</h2>
         <label>Loan amount</label><input id="loan-amount" type="number"/>
         <label>Interest rate</label><input id="interest-rate" type="number"/>
       </div>
-      <div class="repayments-input">
+      <div id="repayments-input">
         <h2>Enter your repayment schedule</h2>
         <label>Amount: </label><input id="repayment-amount" type="number"/>
         <div> 
@@ -25,12 +25,15 @@ const Mortgage = (model, dispatch) => {
           <label>Each month</label><input id="each-month" type="radio" name="period" value="Month" />
         </div>
       </div>
-      <div class="your-loan-chart">
+      <div id="mortgage-chart">
         ${Chart(model, dispatch)}
-        <div class="your-loan-result">
+        <div id="mortgage-result">
           <p>Over ${years} you will hav paid the ${principal} principal
             and the ${interest} total interest.
           </p>
+          <a href="./income-&-expenses">
+            <button>Like to pay less</button>
+          </a>
         </div>
       </div>
     </div>`
