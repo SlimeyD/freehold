@@ -1,0 +1,69 @@
+{
+    "File": {
+        "ID": "78c1632f-413b-88df-19d2-98e97c75d96a",
+        "Path": "/home/simontegg/projects/freehold/Appfile",
+        "Source": "",
+        "Application": {
+            "Name": "freehold",
+            "Type": "node",
+            "Detect": true,
+            "Dependencies": null
+        },
+        "Project": {
+            "Name": "freehold",
+            "Infrastructure": "freehold"
+        },
+        "Infrastructure": [
+            {
+                "Name": "freehold",
+                "Type": "aws",
+                "Flavor": "simple",
+                "Foundations": [
+                    {
+                        "Name": "consul",
+                        "Config": null
+                    }
+                ]
+            }
+        ],
+        "Customization": null,
+        "Imports": null
+    },
+    "Vertices": [
+        {
+            "File": {
+                "ID": "78c1632f-413b-88df-19d2-98e97c75d96a",
+                "Path": "/home/simontegg/projects/freehold/Appfile",
+                "Source": "",
+                "Application": {
+                    "Name": "freehold",
+                    "Type": "node",
+                    "Detect": true,
+                    "Dependencies": null
+                },
+                "Project": {
+                    "Name": "freehold",
+                    "Infrastructure": "freehold"
+                },
+                "Infrastructure": [
+                    {
+                        "Name": "freehold",
+                        "Type": "aws",
+                        "Flavor": "simple",
+                        "Foundations": [
+                            {
+                                "Name": "consul",
+                                "Config": null
+                            }
+                        ]
+                    }
+                ],
+                "Customization": null,
+                "Imports": null
+            },
+            "Dir": "",
+            "NameValue": "freehold"
+        }
+    ],
+    "Edges": []
+}

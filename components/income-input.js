@@ -2,9 +2,8 @@
 const debug       = require('debug')('components:income-input')
 const { html }    = require('inu')
 
-const IncomeInput = (model, dispatch) => {
+const IncomeInput = (model, prefix, dispatch) => {
   debug('model', model)
-  const prefix = 'a' + Math.random() * 1000
 
   return html`
   <div id=${prefix}>

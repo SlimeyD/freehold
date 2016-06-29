@@ -1,7 +1,11 @@
 const debug       = require('debug')('components:mortgage')
 const { html }    = require('inu')
 
+    
+const config      = require('../config').mortgage
+
 const Chart       = require('./chart')
+
 
 const Mortgage = (model, dispatch) => {
   debug('model', model)
@@ -14,8 +18,8 @@ const Mortgage = (model, dispatch) => {
     <div>
       <div id="borrow-input">
         <h2>How much do you want to borrow?</h2>
-        <label>Loan amount</label><input id="loan-amount" type="number"/>
-        <label>Interest rate</label><input id="interest-rate" type="number"/>
+        <label>Loan amount</label><input id="${config.amount.id}" type="number"/>
+        <label>Interest rate</label><input id="${config.interest.id}" type="number"/>
       </div>
       <div id="repayments-input">
         <h2>Enter your repayment schedule</h2>

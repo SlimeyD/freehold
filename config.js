@@ -1,9 +1,11 @@
 module.exports = {
-  registerComponent: {
-    id: 'register',
-    input: { 
-      id: 'register-input' 
-    }
+  income: {
+    your: { prefix: 'your' },
+    partners: { prefix: 'partners' }
+  },
+  mortgage: {
+    amount: { id: 'mortgage-amount-input' },
+    interest: { id: 'mortgage-interest-input' }
   },
   port: 3000,
   url: {

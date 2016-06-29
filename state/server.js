@@ -8,14 +8,7 @@ const serverState = route => () => {
   
   return {
     model: Model({ 
-      location: { href: route },
-      registerComponent: { 
-        id: config.registerComponent.id,
-        input: {
-          id: config.registerComponent.input.id,
-          focused: true
-        }
-      }
+      location: { href: route }
    })
   }
 }

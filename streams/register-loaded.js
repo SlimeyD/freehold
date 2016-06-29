@@ -1,18 +1,27 @@
-const t = require('tcomb')
-const debug = require('debug')('effects:register-loaded')
-const { pull } = require('inu')
-const mutations = require('../lib/pull-mutations')
-const { id, input } = require('../config').registerComponent
+const t           = require('tcomb')
+const debug       = require('debug')('effects:register-loaded')
+const { pull }    = require('inu')
+const mutations   = require('../lib/pull-mutations')
+const config      = require('../config')
 const inputLoaded = require('../actions/input-loaded')
 
+const { income, mortgage } = config
+debug('mortgage: ', mortgage)
+const ids = [
+  `${income.your.prefix}-input`,
+  mortgage.amount.id
+//  `${income.partners.prefix}-input`
+]
+
 module.exports = () => {
+  debug('registerLoaded', ids)
   return pull(
-    mutations(id),
+    mutations(ids),
     pull.filter(mutation => mutation.type === 'addedNode'),
     pull.map(mutation => {
-      debug('register Loaded stream', input.id)
+      debug('input mutation: ', mutation)
       return mutation
     }),
-    pull.map(() => inputLoaded({ inputId: input.id })) 
+    pull.map(mutation => inputLoaded({ inputId: mutation.id })) 
   )
 }

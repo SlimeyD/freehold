@@ -1,8 +1,7 @@
 const t = require('tcomb')
 
 const Model = t.struct({ 
-  location: require('./location'),
-  registerComponent: require('./register-component')
+  location: require('./location')
 }, 'Model')
 
 module.exports = Model
