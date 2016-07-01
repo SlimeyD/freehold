@@ -17,6 +17,10 @@ module.exports = () => {
   debug('registerLoaded', ids)
   return pull(
     mutations(ids),
+    pull.map(mutation => {
+      debug('mutation', mutation)
+      return mutation
+    }),
     pull.filter(mutation => mutation.type === 'addedNode'),
     pull.map(mutation => {
       debug('input mutation: ', mutation)

@@ -6,12 +6,14 @@ const many            = require('pull-many')
 // const messages        = require('./messages')
 const setLocation     = require('./set-location')
 const registerLoaded  = require('./register-loaded')
+const focusInputs     = require('./focus-inputs')
 
 const Streams = client => {
   debug('streams....')
   return many([
     setLocation(),
-    registerLoaded()
+    registerLoaded(),
+    focusInputs()
   ])
 }
 
