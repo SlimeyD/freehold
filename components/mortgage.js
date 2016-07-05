@@ -16,7 +16,7 @@ const Mortgage = (model, dispatch) => {
 
   return html`
     <div>
-      <div id="borrow-input">
+      <div id="mortgage">
         <h2>How much do you want to borrow?</h2>
         <label>Loan amount</label><input id="${config.amount.id}" type="number"/>
         <label>Interest rate</label><input id="${config.interest.id}" type="number"/>

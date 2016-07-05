@@ -26,14 +26,12 @@ const Offset = (model, dispatch) => {
           and cut a total of ${potentialYears} off your mortgage</bold>
           without increasing your repayments.
         </p>
-        <p>Enter your name, email and phone number below to receive your
+        <p>Enter your email to receive your
           personalised projection
         </p>
       </div>
       <div id="details">
-        <input id="details-name" type="text">
         <input id="details-email" type="email">
-        <input id="details-phone" type="tel">
         <button id="details-submit">Find out more</button>
       </div>
       <footer>

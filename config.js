@@ -4,6 +4,7 @@ module.exports = {
     partners: { prefix: 'partners' }
   },
   mortgage: {
+    id: 'mortgage', 
     amount: { id: 'mortgage-amount-input' },
     interest: { id: 'mortgage-interest-input' }
   },
@@ -12,5 +13,6 @@ module.exports = {
     protocol: 'http',
     hostname: 'localhost',
     port: 3000
-  }
+  },
+  proxy: { port: 5050 }
 }

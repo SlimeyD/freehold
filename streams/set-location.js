@@ -1,10 +1,17 @@
-const t = require('tcomb')
-const href = require('sheet-router/href')
-const history = require('sheet-router/history')
-const Pushable = require('pull-pushable')
-const setLocation = require('../actions/set-location')
+const debug         = require('debug')('streams:set-location-stream')
+const t             = require('tcomb')
+const href          = require('sheet-router/href')
+const history       = require('sheet-router/history')
+const Pushable      = require('pull-pushable')
+const setLocation   = require('../actions/set-location')
+const inputLoaded   = require('../actions/input-loaded')
+const parseUrl      = require('parse-url')
+const { mortgage, income }  = require('../config')
 
-const debug = require('debug')('streams:set-location-stream')
+const inputsMap = {
+  "/mortgage": mortgage.amount.id,
+  "/income-&-expenses": `${income.your.prefix}-income`
+}
 
 const setLocationStream = () => {
   const routeActions = Pushable(function onClose (error) {
@@ -13,8 +20,12 @@ const setLocationStream = () => {
   })
 
   function push (href) {
-    debug('push - href: ', href, setLocation)
+    debug('push - href: ', href)
+    const pathname = parseUrl(href).pathname
     routeActions.push(setLocation({ href: href }))
+    if (inputsMap[pathname]) {
+      routeActions.push(inputLoaded({ inputId: inputsMap[pathname] }))
+    }
   }
 
   href(push)

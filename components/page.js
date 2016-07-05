@@ -6,7 +6,7 @@ const Page = (content, initialState) => {
     <html lang="en">
       <head>
         <meta charset="utf-8">
-        <title>Inu Chat</title>
+        <title>Freehold</title>
         ${ process.env.NODE === 'development' ? liveReload : '' }
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
