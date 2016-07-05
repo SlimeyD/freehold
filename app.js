@@ -1,7 +1,7 @@
-const { html }     = require('inu')
-const Router       = require('./components/router')
-const State        = require('./state/state')
-const Action       = require('./actions/actions')
+const { html }    = require('inu')
+const Router      = require('./components/router')
+const State       = require('./state/state')
+const Action      = require('./actions/actions')
 
 const noop = () => {}       
 

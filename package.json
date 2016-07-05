@@ -4,11 +4,11 @@
   "description": "",
   "main": "server.js",
   "engines": {
-    "node": ">=6.2.0"
+    "node": "=5.9.1"
   },
   "scripts": {
     "start": "node server.js",
-    "test:feature": "chimp --watch",
+    "chimp": "chimp --watch",
     "test:components": "browserify test/components/**.js | tap-closer | smokestack | tap-spec",
     "build": "browserify client.js -o public/bundle.js -dv",
     "dev:watch": "watchify client.js -o public/bundle.js -dv | npm run livereload",
@@ -18,7 +18,8 @@
   },
   "browserify": {
     "transform": [
-      "babelify"
+      "babelify",
+      ["evalify", { "files": ["config.js"] } ]
     ]
   },
   "repository": {
@@ -77,6 +78,7 @@
     "reselect": "^2.5.1",
     "serve-static": "^1.10.3",
     "sheet-router": "^3.1.0",
+    "simple-rc": "^1.0.3",
     "stream-to-pull-stream": "^1.6.10",
     "supertest": "^1.2.0",
     "tape": "^4.6.0",
@@ -104,6 +106,7 @@
     "npm-run-all": "^2.2.2",
     "tap-closer": "^1.0.0",
     "tap-spec": "^4.1.1",
+    "tape": "^4.6.0",
     "watchify": "^3.7.0",
     "webdriverio": "^4.1.1",
     "wtch": "^4.0.1",
