@@ -1,3 +1,7 @@
 {
-  "extends": "standard"
+  "extends": "standard",
+  "globals": { "browser": true }
+  "rules" {
+    "complexity": ["warn", 10]
+  }
 }
