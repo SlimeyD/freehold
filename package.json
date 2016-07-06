@@ -37,7 +37,6 @@
   "homepage": "https://github.com/simontegg/inu-play#readme",
   "dependencies": {
     "JSONStream": "^1.1.2",
-    "chur": "github:ahdinosaur/chur",
     "debug": "^2.2.0",
     "deep-merge": "^1.0.0",
     "defined": "^1.0.0",
