@@ -14,5 +14,9 @@ module.exports = {
     hostname: 'localhost',
     port: 3000
   },
-  proxy: { port: 5050 }
+  proxy: { 
+    protocol: 'http',
+    hostname: 'localhost',
+    port: 5050 
+  }
 }

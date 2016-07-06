@@ -4,11 +4,8 @@ require('babel-register')
 const debug            = require('debug')('server')
 const http             = require('http')
 const ws               = require('pull-ws-server')
-const finalHandler     = require('finalhandler')
 const pull             = require('inu').pull
 const toPull           = require('stream-to-pull-stream')
-const createServer     = require('pull-http-server')
-const ecstatic         = require('ecstatic')
 const serveStatic      = require('serve-static')
 
 //lib
