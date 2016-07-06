@@ -10,7 +10,7 @@
     "start": "node server.js",
     "test": "npm run test:integration",
     "lint": "standard",
-    "test:integration": "chimp",
+    "test:integration": "chimp --tags ~@dev",
     "test:components": "browserify test/components/**.js | tap-closer | smokestack | tap-spec",
     "build": "browserify client.js -o public/bundle.js -dv",
     "dev:watch": "watchify client.js -o public/bundle.js -dv | npm run livereload",

@@ -1,6 +1,6 @@
 Feature: submit my email
   
-  @watch
+  @dev
   Scenario: 
     Given I am on the "/offset" page 
     When I enter my email: "johnny5@alive.com"
