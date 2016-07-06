@@ -7,8 +7,10 @@
     "node": "=5.9.1"
   },
   "scripts": {
+    "test": "npm run test:integration", 
     "start": "node server.js",
     "chimp": "chimp --watch",
+    "test:integration": "chimp",
     "test:components": "browserify test/components/**.js | tap-closer | smokestack | tap-spec",
     "build": "browserify client.js -o public/bundle.js -dv",
     "dev:watch": "watchify client.js -o public/bundle.js -dv | npm run livereload",
