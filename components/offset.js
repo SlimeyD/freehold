@@ -1,16 +1,16 @@
-const debug       = require('debug')('components:offset')
-const { html }    = require('inu')
-const Chart       = require('./chart')
+const debug = require('debug')('components:offset')
+const { html } = require('inu')
+const Chart = require('./chart')
 
 const Offset = (model, dispatch) => {
   debug('model', model)
-  const totalYears = "27 years"
-  const principal = "$400k"
-  const interest = "$190k"
-  const saving = "$60k"
-  const savingYears = "three"
-  const potentialSaving = "$150k"
-  const potentialYears = "7 years"
+  const totalYears = '27 years'
+  const principal = '$400k'
+  const interest = '$190k'
+  const saving = '$60k'
+  const savingYears = 'three'
+  const potentialSaving = '$150k'
+  const potentialYears = '7 years'
 
   return html`
     <div id="offset">
@@ -43,5 +43,3 @@ const Offset = (model, dispatch) => {
 }
 
 module.exports = Offset
-
-

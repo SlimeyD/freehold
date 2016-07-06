@@ -1,6 +1,6 @@
 // modules
-const debug       = require('debug')('components:income-input')
-const { html }    = require('inu')
+const debug = require('debug')('components:income-input')
+const { html } = require('inu')
 
 const IncomeInput = (model, prefix, dispatch) => {
   debug('model', model)

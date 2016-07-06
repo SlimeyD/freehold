@@ -1,11 +1,10 @@
-const assert      = require('cucumber-assert')
-const Url         = require('url')
-const { proxy }   = require('../../config') 
+const assert = require('cucumber-assert')
+const Url = require('url')
+const { proxy } = require('../../config')
 
 const url = Url.format(proxy)
 
-module.exports = function() {
-
+module.exports = function () {
   this.Given('I am on the "$string" page', pathname => {
     browser.url(`${url}${pathname}`)
   })
@@ -28,8 +27,8 @@ module.exports = function() {
 
   this.Then(
     'I see a notification telling me: "$string"', (message, cb) => {
-    const notification = browser.element('.notification')
-    notification.waitForExist(5000)
-    assert.equal(notification.getText(), message, cb)
-  })
+      const notification = browser.element('.notification')
+      notification.waitForExist(5000)
+      assert.equal(notification.getText(), message, cb)
+    })
 }

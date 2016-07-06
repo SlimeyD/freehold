@@ -1,10 +1,10 @@
-const t               = require('tcomb')
+const t = require('tcomb')
 // const scheduleInit    = require('./scheduleInit')
-const focusInput      = require('./focus-input')
-const messageStream   = require('./message-stream')
+const focusInput = require('./focus-input')
+const messageStream = require('./message-stream')
 
 const Effect = t.union([
-  scheduleInit, 
+  scheduleInit,
   focusInput,
   messageStream
 ])

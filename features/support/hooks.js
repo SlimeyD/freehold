@@ -4,9 +4,9 @@ const server = require('../../server')
 
 const start = cb => {
   console.log('server starting....')
-  server.listen(config.proxy.port, cb) 
+  server.listen(config.proxy.port, cb)
 }
-const stop = cb => { 
+const stop = cb => {
   console.log('server stopping...')
   server.close(cb)
 }

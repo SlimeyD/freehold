@@ -1,6 +1,6 @@
-const debug         = require('debug')('streams:message-added-stream')
-const { pull }      = require('inu')
-const messageAdded  = require('../actions/message-added')
+const debug = require('debug')('streams:message-added-stream')
+const { pull } = require('inu')
+const messageAdded = require('../actions/message-added')
 
 const messages = client => {
   return pull(
@@ -14,4 +14,3 @@ const messages = client => {
 }
 
 module.exports = messages
-

@@ -1,16 +1,16 @@
 'use strict'
 require('babel-register')
-//main
-const debug            = require('debug')('server')
-const http             = require('http')
-const ws               = require('pull-ws-server')
-const pull             = require('inu').pull
-const toPull           = require('stream-to-pull-stream')
-const serveStatic      = require('serve-static')
+// main
+const debug = require('debug')('server')
+const http = require('http')
+const ws = require('pull-ws-server')
+const pull = require('inu').pull
+const toPull = require('stream-to-pull-stream')
+const serveStatic = require('serve-static')
 
-//lib
-const wsServe          = require('./ws-serve')
-const render           = require('./view')
+// lib
+const wsServe = require('./ws-serve')
+const render = require('./view')
 
 // variables
 const port = process.env.PORT || require('./config').port
@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
       render(req.url),
       pull.drain(page => {
         debug('page: ', page)
-        res.writeHead(200, { "Content-Type": 'text-plain' })
+        res.writeHead(200, { 'Content-Type': 'text-plain' })
         res.end(page)
       })
     )
@@ -40,16 +40,16 @@ const server = http.createServer((req, res) => {
 const wss = ws.createServer({ server: server }, wsServe)
 
 wss.on('connection', connection => {
-  connection.id = connectionIdCounter ++
+  connection.id = connectionIdCounter++
   connections[connection.id] = connection
   console.log(`${new Date()} Connection Id: ${connection.id} accepted`)
 })
 
 // listen
 if (require.main === module) {
- server.listen(port, function () {
-   console.log(`server listening on ${port}`)
- })
+  server.listen(port, function () {
+    console.log(`server listening on ${port}`)
+  })
 }
 
 module.exports = server

@@ -1,18 +1,17 @@
-const debug       = require('debug')('components:mortgage')
-const { html }    = require('inu')
+const debug = require('debug')('components:mortgage')
+const { html } = require('inu')
 
-    
-const config      = require('../config').mortgage
 
-const Chart       = require('./chart')
+const config = require('../config').mortgage
 
+const Chart = require('./chart')
 
 const Mortgage = (model, dispatch) => {
   debug('model', model)
   const { result } = model
-  const years = "30 years"
-  const principal = "$400k"
-  const interest = "$250k"
+  const years = '30 years'
+  const principal = '$400k'
+  const interest = '$250k'
 
   return html`
     <div>
@@ -44,5 +43,3 @@ const Mortgage = (model, dispatch) => {
 }
 
 module.exports = Mortgage
-
-

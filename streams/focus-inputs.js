@@ -1,6 +1,6 @@
-const debug       = require('debug')('streams:focus-inputs')
-const { pull }    = require('inu')
-const config      = require('../config')
+const debug = require('debug')('streams:focus-inputs')
+const { pull } = require('inu')
+const config = require('../config')
 const inputLoaded = require('../actions/input-loaded')
 
 const { income, mortgage } = config

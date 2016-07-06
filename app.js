@@ -1,14 +1,15 @@
-const { html }    = require('inu')
-const Router      = require('./components/router')
-const State       = require('./state/state')
-const Action      = require('./actions/actions')
+const { html } = require('inu')
+const Router = require('./components/router')
+const State = require('./state/state')
+const Action = require('./actions/actions')
 
-const noop = () => {}       
+const noop = () => {
+}
 
 module.exports = (initialState, client, Effect) => {
   return {
     init: initialState,
-      
+
     update: (model, action) => State(Action(action).update(model, action)),
 
     view: (model, dispatch) => {

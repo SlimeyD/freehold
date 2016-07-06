@@ -1,5 +1,5 @@
-const debug       = require('debug')('components:splash')
-const { html }    = require('inu')
+const debug = require('debug')('components:splash')
+const { html } = require('inu')
 
 const Splash = (model, dispatch) => {
   debug('model', model)

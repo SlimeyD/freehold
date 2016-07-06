@@ -1,13 +1,13 @@
-const debug             = require('debug')('components:router')
-const { html }          = require('inu')
-const sheetRouter       = require('sheet-router')
+const debug = require('debug')('components:router')
+const { html } = require('inu')
+const sheetRouter = require('sheet-router')
 
-  // components
-const Splash            = require('./splash')
-const Mortgage          = require('./mortgage')
+// components
+const Splash = require('./splash')
+const Mortgage = require('./mortgage')
 const IncomeAndExpenses = require('./income-&-expenses')
-const Offset            = require('./offset')
-const FourOhFour        = require('./404.js')
+const Offset = require('./offset')
+const FourOhFour = require('./404.js')
 
 const router = sheetRouter('/404', route => {
   return [

@@ -1,12 +1,12 @@
-const debug       = require('debug')('components:income-&-expenses')
-const { html }    = require('inu')
-const config      = require('../config')
+const debug = require('debug')('components:income-&-expenses')
+const { html } = require('inu')
+const config = require('../config')
 
 const IncomeInput = require('./income-input')
 
 const IncomeAndExpenses = (model, dispatch) => {
   debug('model', model)
-  const { income } = config 
+  const { income } = config
 
   return html`
     <div>
@@ -32,5 +32,3 @@ const IncomeAndExpenses = (model, dispatch) => {
 }
 
 module.exports = IncomeAndExpenses
-
-

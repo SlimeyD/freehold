@@ -1,10 +1,10 @@
 // modules
-const debug       = require('debug')('components:main')
-const { html }    = require('inu')
-const map         = require('lodash/fp/map')
+const debug = require('debug')('components:main')
+const { html } = require('inu')
+const map = require('lodash/fp/map')
 
 // actions
-const addMessage  = require('../actions/add-message')
+const addMessage = require('../actions/add-message')
 const msg = {
   author: 'simon',
   text: 'heya',

@@ -1,11 +1,11 @@
 // modules
-const debug    = require('debug')('actions:message-added')
-const t        = require('tcomb')
+const debug = require('debug')('actions:message-added')
+const t = require('tcomb')
 
 // models
-const Model    = require('../models/model')
+const Model = require('../models/model')
 const Messages = require('../models/messages')
-const Message  = require('../models/message')
+const Message = require('../models/message')
 
 const messageAdded = Message.extend({}, 'messageAdded')
 

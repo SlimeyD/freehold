@@ -1,6 +1,5 @@
-const debug       = require('debug')('components:chart')
-const { html }    = require('inu')
-
+const debug = require('debug')('components:chart')
+const { html } = require('inu')
 
 const Chart = (model, dispatch) => {
 

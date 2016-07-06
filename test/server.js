@@ -1,7 +1,7 @@
-const test    = require('tape')
+const test = require('tape')
 const request = require('supertest')
-const server  = require('../server')
-const isHtml  = require('is-html')
+const server = require('../server')
+const isHtml = require('is-html')
 
 test('the server responds with html', t => {
   request(server)
@@ -13,4 +13,3 @@ test('the server responds with html', t => {
       t.end()
     })
 })
-

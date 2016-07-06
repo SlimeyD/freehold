@@ -1,4 +1,4 @@
 module.exports = {
   browser: 'firefox',
-  waitForTimeout: 5000  
+  waitForTimeout: 5000
 }

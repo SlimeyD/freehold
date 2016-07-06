@@ -1,6 +1,6 @@
 // modules
-const debug       = require('debug')('components:404')
-const { html }    = require('inu')
+const debug = require('debug')('components:404')
+const { html } = require('inu')
 
 const FourOhFour = (model, dispatch) => {
   debug('model', model)
