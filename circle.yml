@@ -1,4 +1,2 @@
 machine:
   pre:
-    - npm install chimp
-    - npm run chimp
