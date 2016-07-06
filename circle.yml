@@ -1,0 +1,4 @@
+machine:
+  pre:
+    - npm install chimp -g
+    - chimp
