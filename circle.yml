@@ -1,2 +1,21 @@
 machine:
-  pre:
+  java:
+    version: oraclejdk8
+  node:
+    version: 5.9.1
+
+dependencies:
+  cache_directories:
+    - "~/.npm"
+    - "node_modules"
+
+  override:
+    # Cache Chrome
+    # - ./.scripts/download-chrome.sh
+
+    # Cache npm deps
+    - npm install -g chimp
+    - mkdir empty
+
+    # Cache Selenium & ChromeDriver
+    - chimp --path=empty  
