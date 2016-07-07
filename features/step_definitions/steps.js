@@ -11,6 +11,7 @@ module.exports = function () {
 
   this.When('I click on begin', () => {
     browser.click('button=Click here to begin')
+
   })
 
   this.When('I enter my email: "$string"', email => {
