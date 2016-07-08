@@ -43,6 +43,7 @@
   },
   "homepage": "https://github.com/simontegg/inu-play#readme",
   "dependencies": {
+    "babel-register": "^6.9.0",
     "debug": "^2.2.0",
     "deep-merge": "^1.0.0",
     "defined": "^1.0.0",
