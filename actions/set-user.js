@@ -1,4 +1,3 @@
-const t = require('tcomb')
 const Model = require('../models/model')
 const User = require('../models/user')
 const debug = require('debug')('actions:set-user')

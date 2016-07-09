@@ -1,5 +1,4 @@
 const debug = require('debug')('components:router')
-const { html } = require('inu')
 const sheetRouter = require('sheet-router')
 
 // components

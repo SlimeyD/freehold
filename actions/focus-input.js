@@ -1,5 +1,4 @@
 const t = require('tcomb')
-const RegisterComponent = require('../models/register-component')
 const Model = require('../models/model')
 const debug = require('debug')('actions:focus-input')
 

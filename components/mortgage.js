@@ -8,7 +8,6 @@ const Chart = require('./chart')
 
 const Mortgage = (model, dispatch) => {
   debug('model', model)
-  const { result } = model
   const years = '30 years'
   const principal = '$400k'
   const interest = '$250k'

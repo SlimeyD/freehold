@@ -1,6 +1,5 @@
 // modules
 const debug = require('debug')('actions:add-message')
-const t = require('tcomb')
 const Message = require('../models/message')
 const messageStream = require('../effects/message-stream')
 

@@ -1,5 +1,4 @@
 const debug = require('debug')('effects:message-stream')
-const t = require('tcomb')
 const Message = require('../models/message')
 
 const messageStream = Message.extend({}, 'messageStream')

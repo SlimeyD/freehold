@@ -1,7 +1,5 @@
-const t = require('tcomb')
 const Model = require('../models/model')
 const Location = require('../models/location')
-const Url = require('url')
 const debug = require('debug')('actions:set-location')
 
 const setLocation = Location.extend({}, 'setLocation')

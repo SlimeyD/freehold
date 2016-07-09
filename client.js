@@ -11,7 +11,7 @@ const Effect = require('./effects/client-effects')
 ready(() => {
   const main = document.querySelector('#app')
   const client = wsClient(api)
-  const { views, states } = start(app(initialState, client, Effect))
+  const { views } = start(app(initialState, client, Effect))
 
   pull(
     views(),

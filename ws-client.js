@@ -9,7 +9,7 @@ module.exports = manifest => {
   const client = muxrpc(manifest, false, serialize)()
 
   // setup rpc stream over websockets
-  const protocol = (window.location.protocol == 'https:') ? 'wss:' : 'ws:'
+  const protocol = (window.location.protocol === 'https:') ? 'wss:' : 'ws:'
   const stream = ws.connect(
     `${protocol}//${(window.location.hostname)}:${port}`,
     { onClose: onConnectionLost }

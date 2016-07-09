@@ -5,9 +5,7 @@ const debug = require('debug')('server')
 const http = require('http')
 const ws = require('pull-ws-server')
 const pull = require('inu').pull
-const toPull = require('stream-to-pull-stream')
 const serveStatic = require('serve-static')
-
 
 // lib
 const wsServe = require('./ws-serve')
