@@ -18,6 +18,11 @@ module.exports = function () {
     browser.setValue('input[type="email"]', email)
   })
 
+  this.When('I enter the "$string": "$number" ($string)', (label, value) => {
+    const inputId = browser.getAttribute(`label=${label}`, 'for')
+    browser.setValue(`#${inputId}`, value)
+  })
+
   this.When('I click "$string"', text => {
     browser.click(`=${text}`)
   })
